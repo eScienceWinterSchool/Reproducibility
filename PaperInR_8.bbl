@@ -1,0 +1,57 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Friendly%
+\ \BBA {} Denis%
+}{%
+Friendly%
+\ \BBA {} Denis%
+}{%
+{\protect \APACyear {2005}}%
+}]{%
+friendly_early_2005}
+\APACinsertmetastar {%
+friendly_early_2005}%
+\begin{APACrefauthors}%
+Friendly, M.%
+\BCBT {}\ \BBA {} Denis, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2005}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {The early origins and development of the scatterplot}
+  {The early origins and development of the scatterplot}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of the History of the Behavioral
+  Sciences}{41}{2}{103--130}.
+\newblock
+\begin{APACrefURL} [{2018-10-17}]\url{http://doi.wiley.com/10.1002/jhbs.20078}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1002/jhbs.20078} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Tukey%
+}{%
+Tukey%
+}{%
+{\protect \APACyear {1977}}%
+}]{%
+tukey_exploratory_1977}
+\APACinsertmetastar {%
+tukey_exploratory_1977}%
+\begin{APACrefauthors}%
+Tukey, J\BPBI W.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1977}.
+\newblock
+\APACrefbtitle {Exploratory data analysis} {Exploratory data analysis}.
+\newblock
+\APACaddressPublisher{Reading, Mass}{Addison-Wesley Pub. Co}.
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}
