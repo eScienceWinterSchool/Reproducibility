@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  15 FEB 2019 12:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  19 FEB 2021 12:25
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -250,27 +250,31 @@ LaTeX Font Info:    Try loading font information for T1+aer on input line 105.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
-)))) (./PaperInR_8.aux)
+)))) (./PaperInR_8.aux
+
+LaTeX Warning: Label `numnum_plot' multiply defined.
+
+)
 \openout1 = `PaperInR_8.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 25.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    ... okay on input line 25.
 \c@maskedRefs=\count100
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/apacite/english.apc
@@ -341,76 +345,85 @@ e
 ))
 (./PaperInR_8-concordance.tex)
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 30.
+(Font)              <12> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 30.
+(Font)              <8> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 30.
-LaTeX Font Info:    Try loading font information for T1+aett on input line 30.
+(Font)              <6> on input line 28.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 28.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 54.
+(Font)              <10.95> on input line 50.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 54.
+(Font)              <9> on input line 50.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 54.
+(Font)              <5> on input line 50.
  [1
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-<PaperInR_8-catexplore_plot.pdf, id=21, 433.62pt x 433.62pt>
-File: PaperInR_8-catexplore_plot.pdf Graphic file (type pdf)
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<PaperInR_8-cat_plot.pdf, id=13, 433.62pt x 433.62pt>
+File: PaperInR_8-cat_plot.pdf Graphic file (type pdf)
 
-<use PaperInR_8-catexplore_plot.pdf>
-Package pdftex.def Info: PaperInR_8-catexplore_plot.pdf used on input line 115.
-
+<use PaperInR_8-cat_plot.pdf>
+Package pdftex.def Info: PaperInR_8-cat_plot.pdf used on input line 108.
 (pdftex.def)             Requested size: 288.0011pt x 288.01624pt.
 
-<PaperInR_8-numexplore_plot.pdf, id=22, 433.62pt x 433.62pt>
-File: PaperInR_8-numexplore_plot.pdf Graphic file (type pdf)
 
-<use PaperInR_8-numexplore_plot.pdf>
-Package pdftex.def Info: PaperInR_8-numexplore_plot.pdf used on input line 152.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
+[2] <PaperInR_8-num_plot.pdf, id=22, 433.62pt x 433.62pt>
+File: PaperInR_8-num_plot.pdf Graphic file (type pdf)
+
+<use PaperInR_8-num_plot.pdf>
+Package pdftex.def Info: PaperInR_8-num_plot.pdf used on input line 145.
 (pdftex.def)             Requested size: 288.0011pt x 288.01624pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: Citation `tukey_exploratory_1977' undefined on input line 159.
+LaTeX Warning: Citation `tukey_exploratory_1977' undefined on input line 152.
 
-[3 <./PaperInR_8-catexplore_plot.pdf>]
-<PaperInR_8-numcat_plot.pdf, id=31, 433.62pt x 433.62pt>
+<PaperInR_8-numcat_plot.pdf, id=23, 433.62pt x 433.62pt>
 File: PaperInR_8-numcat_plot.pdf Graphic file (type pdf)
 
 <use PaperInR_8-numcat_plot.pdf>
-Package pdftex.def Info: PaperInR_8-numcat_plot.pdf used on input line 172.
+Package pdftex.def Info: PaperInR_8-numcat_plot.pdf used on input line 160.
 (pdftex.def)             Requested size: 288.0011pt x 288.01624pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4 <./PaperInR_8-numexplore_plot.pdf>]
-<PaperInR_8-numnum_plot.pdf, id=40, 433.62pt x 433.62pt>
+[3 <./PaperInR_8-cat_plot.pdf>]
+<PaperInR_8-numnum_plot.pdf, id=32, 433.62pt x 433.62pt>
 File: PaperInR_8-numnum_plot.pdf Graphic file (type pdf)
 
 <use PaperInR_8-numnum_plot.pdf>
-Package pdftex.def Info: PaperInR_8-numnum_plot.pdf used on input line 190.
+Package pdftex.def Info: PaperInR_8-numnum_plot.pdf used on input line 175.
+(pdftex.def)             Requested size: 288.0011pt x 288.01624pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4 <./PaperInR_8-num_plot.pdf>]
+File: PaperInR_8-numnum_plot.pdf Graphic file (type pdf)
+ <use PaperInR_8-numnum_plot.pdf>
+Package pdftex.def Info: PaperInR_8-numnum_plot.pdf used on input line 194.
 (pdftex.def)             Requested size: 288.0011pt x 288.01624pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: Citation `friendly_early_2005' undefined on input line 197.
+LaTeX Warning: Citation `friendly_early_2005' undefined on input line 201.
 
-[5 <./PaperInR_8-numcat_plot.pdf>] [6 <./PaperInR_8-numnum_plot.pdf>] [7
+[5 <./PaperInR_8-numcat_plot.pdf>] [6 <./PaperInR_8-numnum_plot.pdf>] [7]
+[8
 
-]
-(./PaperInR_8.bbl
+] (./PaperInR_8.bbl
 Underfull \hbox (badness 5388) in paragraph at lines 16--34
 []\T1/aer/m/n/10.95 Friendly, M., & De-nis, D.  (2005).  The early ori-gins and
 
@@ -434,18 +447,21 @@ Underfull \hbox (badness 4132) in paragraph at lines 16--34
 .20078   \T1/aer/m/n/10.95 doi:
  []
 
-) [8
+) [9
 
 ] (./PaperInR_8.aux)
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 4068 strings out of 493089
- 59132 string characters out of 6134842
- 123728 words of memory out of 5000000
- 7408 multiletter control sequences out of 15000+600000
+ 4067 strings out of 493089
+ 59083 string characters out of 6134842
+ 123757 words of memory out of 5000000
+ 7407 multiletter control sequences out of 15000+600000
  44509 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,9n,35p,917b,298s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -464,10 +480,10 @@ ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texliv
 e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive
 /2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/
 2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on PaperInR_8.pdf (8 pages, 199038 bytes).
+Output written on PaperInR_8.pdf (9 pages, 199769 bytes).
 PDF statistics:
- 116 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
+ 119 PDF objects out of 1000 (max. 8388607)
+ 83 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  25 words of extra memory for PDF output out of 10000 (max. 10000000)
 

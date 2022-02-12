@@ -1,6 +1,7 @@
+%% loading data to do basic R
+
 \documentclass[11pt]{article}
 
-% TITLE , but needs to be 'made' (see below)
 
 \title{My first replicable Paper}
 \author{
@@ -13,24 +14,21 @@
 \date{\today}
 
 
-% notice \begin...\end
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 
-\maketitle % this will use the previous information. Do NOT MOVE.
-
-% an abstract, notice \begin...\end
+\maketitle 
 
 \begin{abstract}
 This is an example on how to make a reproducible paper. We are using R from Rstudio, creating an RSweave document. This is a nice start to create a nice paper and get an A+. The next sections will show the steps taken.
 \end{abstract}
 
-% a section, notice it has a label for easy 'referencing'
-\section{Introduction}\label{intro}  %if no number is needed: \section*
+
+\section{Introduction}\label{intro}  
 
 This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex. This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex. This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex. This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex.
 
-% the newlines are not read:
+
 This is my nice intro to my great paper, 
 I will explain the cool things 
 I can do with my new `computational thinking' 
@@ -40,13 +38,13 @@ combined with some Latex.
 
 \section{Exploring Data}\label{explo}
 
-% footnotes, italic with \emph and referencing:
+
 Sections may use a label\footnote{In fact, you can have a label wherever you think a future reference to that content might be needed.}. This label is needed for referencing. For example the next section has label \emph{datas}, so you can reference it by writing: As we see in section \ref{catexplo}.
 
 
 %%%%%% code for loading here
 
-
+% this is a CODE CHUNK
 <<>>=
 # collecting
 fileLink="https://github.com/eScienceWinterSchool/Reproducibility/raw/master/censoredworld.csv"

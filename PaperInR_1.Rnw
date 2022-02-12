@@ -1,3 +1,5 @@
+%% basic latex when No R.
+
 \documentclass[11pt]{article}
 
 % TITLE , but needs to be 'made' (see below)
@@ -26,7 +28,8 @@ This is an example on how to make a reproducible paper. We are using R from Rstu
 \end{abstract}
 
 % a section, notice it has a label for easy 'referencing'
-\section{Introduction}\label{intro}  %if no number is needed \section*
+\section{Introduction}\label{intro}  
+%if no number were needed use * \section*
 
 This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex. This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex. This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex. This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex.
 

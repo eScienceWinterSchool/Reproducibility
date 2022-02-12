@@ -1,15 +1,13 @@
+%%%%%% bibliography
+
 \documentclass[11pt]{article}
 
-%%%%%% bibliografia
+\usepackage{apacite} %bib style
 
-\usepackage{apacite}
-\usepackage{longtable} % for tables
+\usepackage{longtable} 
 
-\usepackage{adjustbox} % for size
+\usepackage{adjustbox} 
 
-
-
-% TITLE , but needs to be 'made' (see below)
 
 \title{My first replicable Paper}
 \author{
@@ -22,25 +20,23 @@
 \date{\today}
 
 
-% notice \begin...\end
+
 \usepackage{Sweave}
 \begin{document}
 \input{PaperInR_8-concordance}
 
-\maketitle % this will use the previous information. Do NOT MOVE.
-
-% an abstract, notice \begin...\end
+\maketitle 
 
 \begin{abstract}
 This is an example on how to make a reproducible paper. We are using R from Rstudio, creating an RSweave document. This is a nice start to create a nice paper and get an A+. The next sections will show the steps taken.
 \end{abstract}
 
-% a section, notice it has a label for easy 'referencing'
-\section{Introduction}\label{intro}  %if no number is needed \section*
+
+\section{Introduction}\label{intro}  
 
 This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex. This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex. This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex. This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex.
 
-% the newlines are not read:
+
 This is my nice intro to my great paper, 
 I will explain the cool things 
 I can do with my new `computational thinking' 
@@ -50,25 +46,23 @@ combined with some Latex.
 
 \section{Exploring Data}\label{explo}
 
-% footnotes, italic with \emph and referencing:
+
 Sections may use a label\footnote{In fact, you can have a label wherever you think a future reference to that content might be needed.}. This label is needed for referencing. For example the next section has label \emph{datas}, so you can reference it by writing: As we see in section \ref{catexplo}.
 
 
-%%%%%% code for loading here
+
 
 
 
 
 \subsection{Exploring Categorical Data}\label{catexplo}
 
-Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
+Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
 
 You can see the statistics of categorical variables in Table \ref{catexplore_table}.
 
-%%%%%% NEW VERSION
-
-% latex table generated in R 3.4.1 by xtable 1.8-2 package
-% Fri Feb 15 12:07:35 2019
+% latex table generated in R 4.0.3 by xtable 1.8-4 package
+% Fri Feb 19 12:25:12 2021
 \begingroup\normalsize
 \begin{longtable}{llrrr}
 \caption{Freq Table} \\ 
@@ -102,17 +96,16 @@ ONI & nd & 2 & 2.6 & 2.6 \\
 
 
 
-
 %%%%%%
 
 You can see this variable plotted in Figure \ref{catexplore_plot}
 
+
+
 \begin{figure}[h]
 \centering
 \begin{adjustbox}{width=7cm,height=5cm}
-%\begin{adjustbox}{width=7cm,height=5cm,clip,trim=0cm 2cm 0cm 0cm} 
-%trimmimg: left,bottom, right,top
-\includegraphics{PaperInR_8-catexplore_plot}
+\includegraphics{PaperInR_8-cat_plot}
 \end{adjustbox}
 \caption{ONI barplot}  %title
 \label{catexplore_plot} % for \ref{}
@@ -126,10 +119,8 @@ You can see this variable plotted in Figure \ref{catexplore_plot}
 
 Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
 
-%%%%%% code for exploring here
-
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Fri, Feb 15, 2019 - 12:07:35
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Fri, Feb 19, 2021 - 12:25:13
 \begin{table}[!htbp] \centering 
   \caption{Stat summary for nummeric vars} 
   \label{numexplore_table} 
@@ -146,34 +137,47 @@ RWB & 37.99 & 39.67 & 6.38 & 83.90 & 28.22 & 46.85 & 18.13 \\
 \end{table} 
 In the Table \ref{numexplore_table}, you realize that the mean of FH is {\bf58.9078947368421}.
 
+
+
 \begin{figure}[h]
 \centering
-\begin{adjustbox}{width=7cm,height=5.5cm,clip,trim=0cm 1cm 0cm 0cm} 
-\includegraphics{PaperInR_8-numexplore_plot}
+\begin{adjustbox}{width=7cm,height=5.5cm,clip,trim=0cm 0.5cm 0cm 0cm} 
+\includegraphics{PaperInR_8-num_plot}
 \end{adjustbox}
-\caption{boxplots}  %title
-\label{numexplore_plot} % for \ref{}
+\caption{boxplots}  
+\label{num_plot} 
 \end{figure}
 
-
+%%%%% adding citation
 Boxplots were introduced by Tuckey \cite{tukey_exploratory_1977}.
 
 \section{Looking for Relationships}\label{bivar}
 
 
+\begin{figure}[h]
+\centering
+\begin{adjustbox}{width=7cm,height=7cm} 
+\includegraphics{PaperInR_8-numcat_plot}
+\end{adjustbox}
+\caption{Boxplots: one numerical by a category.}  
+\label{numcat_plot} 
+\end{figure}
+
+
 Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
 
-\subsection{Numerical and  Categorical}\label{binumcat}
+
 
 
 \begin{figure}[h]
 \centering
-\begin{adjustbox}{width=7cm,height=7cm,clip,trim=0cm 0cm 0cm 0cm} 
-\includegraphics{PaperInR_8-numcat_plot}
+\begin{adjustbox}{width=7cm,height=5.5cm}
+\includegraphics{PaperInR_8-numnum_plot}
 \end{adjustbox}
-\caption{boxplots}  %title
-\label{numcat_plot} % for \ref{}
+\caption{boxplots}  
+\label{numnum_plot} 
 \end{figure}
+
 
 
 Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
@@ -193,9 +197,8 @@ Here, I continue doing this nice work, I hope you like it and read it. It has be
 \label{numnum_plot} % for \ref{}
 \end{figure}
 
-
+%%%%% adding citation
 The scatter plot is thought to be invented by  John Frederick W. Herschel \cite{friendly_early_2005}
-
 
 \section{My Regression}\label{regre}
 
@@ -218,8 +221,8 @@ This is another:
 \clearpage
 These is a better summary, and for both:
 
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Fri, Feb 15, 2019 - 12:07:38
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Fri, Feb 19, 2021 - 12:25:13
 \begin{table}[!htbp] \centering 
   \caption{Regression Models} 
   \label{regs} 
@@ -262,12 +265,12 @@ F Statistic & 189.526$^{***}$ (df = 1; 74) & 43.529$^{***}$ (df = 5; 70) \\
 \end{table} 
 I hope you like what you see in the Table \ref{regs}.
 
+%%%%% adding bibliography
 \clearpage
 
 %\bibliographystyle{abbrv}
 \bibliographystyle{apacite}
 %\renewcommand{\refname}{Bibliography}
 \bibliography{ZoteroExample}
-
 
 \end{document}

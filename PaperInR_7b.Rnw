@@ -1,16 +1,13 @@
+%%%%%% bibliography
+
 \documentclass[11pt]{article}
 
-%%%%%% better tables
-% install in R: reporttools and stargazer
+\usepackage{apacite} %bib style
 
+\usepackage{longtable} 
 
-\usepackage{longtable} % for tables
+\usepackage{adjustbox} 
 
-\usepackage{adjustbox} % for size
-
-
-
-% TITLE , but needs to be 'made' (see below)
 
 \title{My first replicable Paper}
 \author{
@@ -23,25 +20,22 @@
 \date{\today}
 
 
-% notice \begin...\end
-\usepackage{Sweave}
+
 \begin{document}
-\input{PaperInR_5-concordance}
+\SweaveOpts{concordance=TRUE}
 
-\maketitle % this will use the previous information. Do NOT MOVE.
-
-% an abstract, notice \begin...\end
+\maketitle 
 
 \begin{abstract}
 This is an example on how to make a reproducible paper. We are using R from Rstudio, creating an RSweave document. This is a nice start to create a nice paper and get an A+. The next sections will show the steps taken.
 \end{abstract}
 
-% a section, notice it has a label for easy 'referencing'
-\section{Introduction}\label{intro}  %if no numner were needed \section*
+
+\section{Introduction}\label{intro}  
 
 This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex. This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex. This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex. This is my intro to my great paper, I will explain the cool things I can do with my new `computational thinking' powers combined with some Latex.
 
-% the newlines are not read:
+
 This is my nice intro to my great paper, 
 I will explain the cool things 
 I can do with my new `computational thinking' 
@@ -51,14 +45,24 @@ combined with some Latex.
 
 \section{Exploring Data}\label{explo}
 
-% footnotes, italic with \emph and referencing:
+
 Sections may use a label\footnote{In fact, you can have a label wherever you think a future reference to that content might be needed.}. This label is needed for referencing. For example the next section has label \emph{datas}, so you can reference it by writing: As we see in section \ref{catexplo}.
 
 
-%%%%%% code for loading here
 
 
+<<libraries, echo=FALSE>>=
+library(reporttools)
+library(stargazer)
+@
 
+
+<<collecting, echo=FALSE>>=
+# collecting
+fileLink="https://github.com/eScienceWinterSchool/Reproducibility/raw/master/censoredworld.csv"
+dataidx=read.csv(fileLink)
+
+@
 
 \subsection{Exploring Categorical Data}\label{catexplo}
 
@@ -66,39 +70,16 @@ Here, I continue doing this nice work, I hope you like it and read it. It has be
 
 You can see the statistics of categorical variables in Table \ref{catexplore_table}.
 
-%%%%%% NEW VERSION
+<<results=tex,echo=FALSE>>=
 
-% latex table generated in R 3.4.1 by xtable 1.8-2 package
-% Fri Feb 15 11:41:19 2019
-\begingroup\normalsize
-\begin{longtable}{llrrr}
-\caption{Freq Table} \\ 
- \textbf{Variable} & \textbf{Levels} & $\mathbf{n}$ & $\mathbf{\%}$ & $\mathbf{\sum \%}$ \\ 
-  \hline
-Region & Africa & 11 & 14.5 & 14.5 \\ 
-   & Asia & 35 & 46.0 & 60.5 \\ 
-   & Eurasia & 6 & 7.9 & 68.4 \\ 
-   & Europe & 15 & 19.7 & 88.1 \\ 
-   & NAmerica & 5 & 6.6 & 94.7 \\ 
-   & Oceania & 1 & 1.3 & 96.0 \\ 
-   & SAmerica & 3 & 4.0 & 100.0 \\ 
-   \hline
- & all & 76 & 100.0 &  \\ 
-   \hline
-\hline
-ONI & nd & 2 & 2.6 & 2.6 \\ 
-   & ne & 41 & 54.0 & 56.6 \\ 
-   & per & 8 & 10.5 & 67.1 \\ 
-   & sel & 21 & 27.6 & 94.7 \\ 
-   & sub & 4 & 5.3 & 100.0 \\ 
-   \hline
- & all & 76 & 100.0 &  \\ 
-   \hline
-\hline
-\hline
-\label{catexplore_table}
-\end{longtable}
-\endgroup
+tableNominal(vars = dataidx[, c(2,5)], 
+             cap = "Freq Table", 
+             vertical = FALSE, 
+             lab ="catexplore_table",
+             caption.placement = "top",
+             font.size = "normalsize")
+@
+
 
 
 
@@ -107,12 +88,22 @@ ONI & nd & 2 & 2.6 & 2.6 \\
 
 You can see this variable plotted in Figure \ref{catexplore_plot}
 
+<<cat_table, echo=FALSE>>=
+tableONI=as.data.frame(table(dataidx$ONI))
+names(tableONI)=c("var","count")
+##
+library(ggplot2)
+base=ggplot(data=tableONI,aes(x=var,y=count))
+bar1=base + geom_bar(stat = 'identity')
+@
+
+
 \begin{figure}[h]
 \centering
 \begin{adjustbox}{width=7cm,height=5cm}
-%\begin{adjustbox}{width=7cm,height=5cm,clip,trim=0cm 2cm 0cm 0cm} 
-%trimmimg: left,bottom, right,top
-\includegraphics{PaperInR_5-catexplore_plot}
+<<cat_plot, echo=FALSE, fig=TRUE>>=
+bar1
+@
 \end{adjustbox}
 \caption{ONI barplot}  %title
 \label{catexplore_plot} % for \ref{}
@@ -126,54 +117,80 @@ You can see this variable plotted in Figure \ref{catexplore_plot}
 
 Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
 
-%%%%%% code for exploring here
+<<summary, results=tex, echo=FALSE>>=
+# library(stargazer)
+stargazer(dataidx[,c(3,4)],
+          title = "Stat summary for nummeric vars", 
+          label = "numexplore_table",
+          font.size = 'footnotesize',
+          digits = 2,
+          summary.stat = c("median","mean","min",'max','p25','p75','sd'))
+@
 
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Fri, Feb 15, 2019 - 11:41:19
-\begin{table}[!htbp] \centering 
-  \caption{Stat summary for nummeric vars} 
-  \label{numexplore_table} 
-\footnotesize 
-\begin{tabular}{@{\extracolsep{5pt}}lccccccc} 
-\\[-1.8ex]\hline 
-\hline \\[-1.8ex] 
-Statistic & \multicolumn{1}{c}{Median} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} & \multicolumn{1}{c}{Pctl(25)} & \multicolumn{1}{c}{Pctl(75)} & \multicolumn{1}{c}{St. Dev.} \\ 
-\hline \\[-1.8ex] 
-FH & 61 & 58.91 & 10 & 97 & 43.5 & 80 & 23.79 \\ 
-RWB & 37.99 & 39.67 & 6.38 & 83.90 & 28.22 & 46.85 & 18.13 \\ 
-\hline \\[-1.8ex] 
-\end{tabular} 
-\end{table} 
-In the Table \ref{numexplore_table}, you realize that the mean of FH is {\bf58.9078947368421}.
+In the Table \ref{numexplore_table}, you realize that the mean of FH is {\bf\Sexpr{mean(dataidx$FH)}}.
+
+<<num_table, echo=FALSE>>=
+base=ggplot(data=dataidx)
+box = base + geom_boxplot(aes(y=FH,x=1)) 
+box = box + geom_boxplot(aes(y=RWB,x=2))
+box=box + scale_x_continuous(breaks = c(1,2),
+                             labels = names(dataidx[,c(3,4)]))
+@
+
 
 \begin{figure}[h]
 \centering
-\begin{adjustbox}{width=7cm,height=5.5cm,clip,trim=0cm 1cm 0cm 0cm} 
-\includegraphics{PaperInR_5-numexplore_plot}
+\begin{adjustbox}{width=7cm,height=5.5cm,clip,trim=0cm 0.5cm 0cm 0cm} 
+<<num_plot, echo=FALSE, fig=TRUE>>=
+box +labs(x=NULL,y=NULL)
+@
 \end{adjustbox}
-\caption{boxplots}  %title
-\label{numexplore_plot} % for \ref{}
+\caption{boxplots}  
+\label{num_plot} 
 \end{figure}
 
-
-Boxplots were introduced by Tuckey (Tukey, John W (1977). Exploratory Data Analysis. Addison-Wesley.)
+%%%%% adding citation
+Boxplots were introduced by Tuckey \cite{tukey_exploratory_1977}.
 
 \section{Looking for Relationships}\label{bivar}
+
+<<echo=FALSE>>=
+base=ggplot(dataidx,aes(y=FH,x=Region))
+box=base + geom_boxplot() 
+@
+
+\begin{figure}[h]
+\centering
+\begin{adjustbox}{width=7cm,height=7cm} 
+<<numcat_plot, echo=FALSE, fig=TRUE>>=
+box + theme_minimal() + labs(title = "Is this right?")
+@
+\end{adjustbox}
+\caption{Boxplots: one numerical by a category.}  
+\label{numcat_plot} 
+\end{figure}
 
 
 Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
 
-\subsection{Numerical and  Categorical}\label{binumcat}
+
+<<echo=FALSE>>=
+base=ggplot(data=dataidx,aes(x=FH,y=RWB))
+points=base + geom_point()
+@
 
 
 \begin{figure}[h]
-\centering                                  %trim=left,bottom,right,top
-\begin{adjustbox}{width=7cm,height=7cm,clip,trim=0cm 0cm 0cm 0cm} 
-\includegraphics{PaperInR_5-numcat_plot}
+\centering
+\begin{adjustbox}{width=7cm,height=5.5cm}
+<<numnum_plot, echo=FALSE, fig=TRUE>>=
+points 
+@
 \end{adjustbox}
-\caption{boxplots}  %title
-\label{numcat_plot} % for \ref{}
+\caption{boxplots}  
+\label{numnum_plot} 
 \end{figure}
+
 
 
 Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
@@ -187,15 +204,46 @@ Here, I continue doing this nice work, I hope you like it and read it. It has be
 \begin{figure}[h]
 \centering
 \begin{adjustbox}{width=7cm,height=5.5cm,clip,trim=0cm 1cm 0cm 0cm} 
-\includegraphics{PaperInR_5-numnum_plot}
+<<numnum_plot, echo=FALSE, fig=TRUE>>=
+plot(dataidx$FH~dataidx$RWB)
+@
 \end{adjustbox}
 \caption{boxplots}  %title
 \label{numnum_plot} % for \ref{}
 \end{figure}
 
+%%%%% adding citation
+The scatter plot is thought to be invented by  John Frederick W. Herschel \cite{friendly_early_2005}
 
-The scatter plot is thought to be invented by  John Frederick W. Herschel according to this link: https://qz.com/1235712/the-origins-of-the-scatter-plot-data-visualizations-greatest-invention/
+\section{My Regression}\label{regre}
 
+This is a Regression in R:
 
+<<>>=
+regre1=lm(FH~RWB,data=dataidx)
+@
+
+This is another:
+
+<<>>=
+regre2=lm(FH~RWB+ONI,data=dataidx)
+@
+
+\clearpage
+These is a better summary, and for both:
+
+<<echo=FALSE,results=tex>>=
+stargazer(regre1,regre2,title = "Regression Models",label = 'regs')
+@
+
+I hope you like what you see in the Table \ref{regs}.
+
+%%%%% adding bibliography
+\clearpage
+
+%\bibliographystyle{abbrv}
+\bibliographystyle{apacite}
+%\renewcommand{\refname}{Bibliography}
+\bibliography{ZoteroExample}
 
 \end{document}

@@ -17,7 +17,7 @@ _____
 
 We will focus on the production of a simple paper (the simplest ever). Let me describe you the steps to follow:
 
-1. **Create a GitHub account**. Go to [GitHub](https://github.com/) and **sign up** to create an account. Your username should have your name/surname.
+1. **Create a GitHub account**. Go to [GitHub](https://github.com/) and **sign up** to create an account. Your username should have your name/surname. You should also download and install the [GitHub desktop](https://desktop.github.com/) app.
 
 2. **Create a GitHub repository** Sign into Github, and create a repository or _repo_ there. You should complete the information shown in the figure below:
 
@@ -59,7 +59,7 @@ knitr::include_graphics("syncro.png")
     
 ```{r, echo=TRUE, eval=FALSE}
 # collecting
-fileLink="https://github.com/eScienceWinterSchool/Reproducibility/raw/master/censoredworld.csv"
+fileLink="linkToGithub repo"
 dataidx=read.csv(fileLink)
 
 # Describing a categorical variable**:
@@ -94,9 +94,9 @@ plot(dataidx$FH~dataidx$RWB)
 
 6. **Transform the RScript**. I have a series of templates. Let's use each one. For that, you need to go to our [repo](https://github.com/eScienceWinterSchool/Reproducibility), **fork** it to your GitHub account; and then clone the forked repo into your machine.
 
-
-
-
+7. **Get a Zotero** account [here](https://www.zotero.org/user/register). Then, download and [install](https://www.zotero.org/download/) the desktop version and the **connector**. In your desktop, make citations for:
+* [Paper](http://datavis.ca/papers/friendly-scat.pdf).
+* [Book](https://www.amazon.com/Exploratory-Data-Analysis-Tukey-1977-01-01/dp/B019NER4VG/ref=sr_1_fkmr0_1?keywords=Tukey%2C+John+W+%281977%29.+Exploratory+Data+Analysis.+Addison-Wesley&qid=1580940897&sr=8-1-fkmr0).
 
 
 _____
