@@ -13,7 +13,7 @@ output:
   bookdown::html_document2
   
 # for bibliography
-bibliography: FGVexample.bib
+bibliography: Bib_winterschool.bib
 biblio-style: apalike
 #csl: apa.csl
 ---
@@ -28,8 +28,6 @@ biblio-style: apalike
 ```{r someSetup, echo=FALSE}
 # clean memory
 rm(list = ls())
-# for cropping figures
-knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 ```
 
 <!-- use "-" to unnumber -->
@@ -56,11 +54,13 @@ I will soon use cross-ref.I will soon use cross-ref: as we see in Section \@ref(
 
 ```{r collecting_DataTable, echo=FALSE}
 # github link to data:
-link="https://github.com/eScienceWinterSchool/PythonSession/raw/master/hdidemiso_plus.RDS"
+linkOrg="https://github.com/eScienceWinterSchool/"
+linkRepo="PythonSession/raw/master/"
+file_Name1="hdidemiso_plus.RDS"
+link_file_Name1=paste0(linkOrg,linkRepo,file_Name1)
 
 #opening data
-fileLink=url(link)
-mergedData=readRDS(fileLink)
+mergedData=readRDS(url(link_file_Name1))
 ```
 
 ## Exploring Categorical Data {#catexplor}
@@ -76,7 +76,7 @@ You can see the statistics of categorical variables in Table \@ref(tab:catexplor
 <!-- Table is created and displayed. -->
 
 ```{r catexploreTable,results='asis', warning=FALSE, echo=FALSE}
-## display frequency table of Freedom Index
+## display frequency table of Regime type
 library(summarytools)
 library(tidyr)
 library(knitr)
@@ -133,7 +133,7 @@ originalNumeric=AllNumericNames[!grepl('mM',AllNumericNames)]
 
 library(vtable)
 st(mergedData[,originalNumeric],
-   title ="Stats summary for nummeric vars",
+   title ="Stats summary for numeric vars",
    digits = 1) #decimal places
 ```
 
@@ -162,7 +162,7 @@ The boxplots you have just seen were introduced by [@tukey_exploratory_1977].
 
 # My Regression
 
-Several times we need regression.
+Several times we need regression. This is a nice summary for two regressions, as shown in Table \@ref(tab:regs1):
 
 ```{r regresPrep, echo=FALSE}
 ## prepare regressions
@@ -173,7 +173,7 @@ h2=formula(HumanDevelopmentIndex~Functioningofgovernment + Politicalparticipatio
 regre2=glm(h2,data=mergedData,family = "gaussian")
 ```
 
-This is a nice summary for two regressions, as shown in Table \@ref(tab:regs1):
+
 
 ```{r regs1,results='asis', echo=FALSE}
 # prepare labels
@@ -198,73 +198,67 @@ I hope you like what you see in the Table \@ref(tab:regs1). You can learn more o
 
 # Other plots {#otherPlots}
 
-## A word cloud {#wordPlot}
-
-Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud. Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.
-
-```{r collecting_DataForCloud, echo=FALSE}
-location=paste0(where,'rebelData.csv')
-wordData=read.csv(location)
-```
-
-```{r prepareDataForCloud, echo=FALSE}
-library(tidyr)
-wordDataNames=separate_rows(wordData,StateName) # key process
-stateCounts=as.data.frame(table(wordDataNames$StateName))
-names(stateCounts)=c("state","aCount")
-```
-
-
-```{r theCloudPlot, echo=FALSE, fig.cap="Nations by presence of rebel movements.",crop=TRUE}
-library(ggwordcloud)
-
-set.seed(123)
-base = ggplot(stateCounts, aes(label = state,
-                               size= aCount,
-                               color = aCount))
-cloudRebel= base + geom_text_wordcloud() + theme_minimal()
-cloudRebel= cloudRebel+scale_color_gradient(low = "orange",
-                                            high = "red") 
-cloudRebel
-```
-
-Above you see our Figure \@ref(fig:theCloudPlot). Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
-
-It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it.
-
-It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it.
-
-You can read something interesting somewhere else [@lipman_art_2022].
-
 ## A map {#map}
 
 Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.
 
 Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.
 
-Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map in Figure \@ref(fig:theMapPlot).
+Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map in Figure \@ref(fig:plot-cityMap).
 
-```{r collecting_DataMap, echo=FALSE,message=FALSE}
-fileMapPoints=paste0(where,"calls911_geo.geojson")
-fileMapPolygons=paste0(where,"MapSeattle.geojson")
+```{r collecting-DataMap, echo=FALSE,message=FALSE}
 
-library(ggplot2)
+# github link to data:
+linkRepo="data/raw/master/"
+file_Name2="MapSeattle.geojson"
+file_Name3="calls911_geo.geojson"
+
+link_file_Name2=paste0(linkOrg,linkRepo,file_Name2)
+link_file_Name3=paste0(linkOrg,linkRepo,file_Name3)
+
+#opening data
 library(sf)
-events=read_sf(fileMapPoints)
-city=read_sf(fileMapPolygons)
+cityMap=read_sf(link_file_Name2)
+eventsLocations=read_sf(link_file_Name3)
 ```
 
+```{r plot-cityMap, echo=FALSE, fig.cap="Plot numeric colums",message=FALSE}
 
-```{r theMapPlot, echo=FALSE, fig.cap="Calls to 911 by time of day",message=FALSE}
+library(ggplot2)
+ggplot(cityMap) +geom_sf(aes(fill=ACRES_TOTAL))
+```
+Figure \@ref(fig:plot-cityMap) uses only one layer. Let's add another layer in the next map. Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it.
 
-base=ggplot(city) + geom_sf() + theme_light()
-eventsByTime=base + geom_sf(data = events,
+
+
+
+```{r plot-911Map, echo=FALSE, fig.cap="Calls to 911 by time of day",message=FALSE}
+library(ggplot2)
+base=ggplot(cityMap) + geom_sf() + theme_light()
+eventsByTime=base + geom_sf(data = eventsLocations,
                          size=0.5,
                          aes(color=nightTime)) 
 eventsByTime
 ```
+You can see that Figure \@ref(fig:plot-911Map) actually uses one map on top of the other. Let me show you an interactive version:
 
-Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it.
+```{r plot-911Map-leaflet, echo=FALSE, fig.cap="A map using leaflet",message=FALSE}
+library(leaflet)
+# create palette for two colors
+pal <- colorFactor(c("navy", "red"), domain = c(T, F))
+
+
+leaflet(eventsLocations) %>% addTiles() %>%
+  addCircleMarkers(
+    radius = ~ifelse(nightTime == T, 3, 2),
+    color = ~pal(nightTime),
+    stroke = F, # border
+    fillOpacity = 0.5
+  )
+```
+
+
+Figure \@ref(fig:plot-911Map-leaflet) above looks nice. Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it.
 
 <!--- more than one author in a citation --->
 

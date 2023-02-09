@@ -1,5 +1,8 @@
 \documentclass[a4paper, 12pt]{article}
 
+%% for rotating tables
+\usepackage{rotating, graphicx}
+
 %% for bibliography
 \usepackage[natbibapa]{apacite}
 \bibliographystyle{apacite} 
@@ -40,11 +43,6 @@ This is an example of an abstract in a paper. This is an example of an abstract 
 <<someSetup, echo=FALSE>>=
 # clean memory
 rm(list = ls())
-
-# github data folder:
-link1="https://github.com/profemagallanes-unmsm/"
-link2="FGV_Python_prepublish/raw/main/DataFiles/"
-where=paste0(link1,link2)
 @
 
 
@@ -65,9 +63,15 @@ Another section. I will use a footnot now \footnote{This is a footnote.}. I will
 I will soon use cross-ref.I will soon use cross-ref: as we see in Section \ref{catexplor}.
 
 
-<<collecting_DataTable, echo=FALSE>>=
-fileLink=url(paste0(where,"mergedData.RDS"))
-mergedData=readRDS(fileLink)
+<<collecting-DataTable, echo=FALSE>>=
+# github link to data:
+linkOrg="https://github.com/eScienceWinterSchool/"
+linkRepo="PythonSession/raw/master/"
+file_Name1="hdidemiso_plus.RDS"
+link_file_Name1=paste0(linkOrg,linkRepo,file_Name1)
+
+#opening data
+mergedData=readRDS(url(link_file_Name1))
 @
 
 \subsection{Exploring Categorical Data}\label{catexplor}
@@ -88,8 +92,8 @@ library(tidyr)
 library(knitr)
 library(kableExtra)
 
-namesHeaders=c("Democracy Index","count","pct","pct_cumm")
-freq(mergedData[, 9], 
+namesHeaders=c("Democracy Level","count","pct","pct_cumm")
+freq(mergedData$Regimetype, 
      plain.ascii = FALSE,
      report.nas=FALSE) %>%
     ## changes, we need data frame
@@ -98,7 +102,8 @@ freq(mergedData[, 9],
            digits = 2,                #label cross-ref!!
            caption = "This is a table\\label{catexploreTable}",
            col.names = namesHeaders)%>%
-    kable_styling(full_width = F)
+    kable_styling(full_width = F,latex_options = "h")
+
 @
 
 
@@ -110,23 +115,21 @@ You can see this variable plotted in Figure \ref{catBarplot} on page \pageref{ca
 % Object will be created BUT NOT plotted
 % the chunk name IS NOT used in cross-ref for figure
 
-<<prepare_catBarplot, echo=FALSE>>=
-## prepare frequency table as data frame
-theTable_Free=table(mergedData$PressFreedomIndex_or)
-theTable_Free_asDF=as.data.frame(theTable_Free)
-names(theTable_Free_asDF)=c("var","count") #renaming
-@
-
-% Latex will use this code for plotting
 \begin{figure}[h]
 \centering
 \begin{adjustbox}{width=7cm,height=5cm} %resize
 <<catBarplot, echo=FALSE, fig=TRUE>>=
 library(ggplot2)
-base=ggplot(data=theTable_Free_asDF,aes(x=var,y=count))
-bar1=base + geom_bar(stat = 'identity')
-bar1=bar1+labs(x="Press Freedom")
-bar1
+
+base=ggplot(data = mergedData)
+bar=base + geom_bar(aes(x=Regimetype),
+                    fill='orange',
+                    color='red')
+bar=bar + labs(title = "Democracy in the world (2021)",
+           x= "Levels",
+           y= "Count of countries",
+           caption = 'Source: The Economist')
+bar
 @
 \end{adjustbox}
 \caption{Press Freedom Index in the World}  %title
@@ -139,36 +142,44 @@ bar1
 
 Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
 
+Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
+
 Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
 
 <<summaryNumeric, results=tex, echo=FALSE>>=
 
+## table of summary statistics for numerical columns
+AllNumericNames=names(Filter(is.numeric, mergedData))
+originalNumeric=AllNumericNames[!grepl('mM',AllNumericNames)]
+
 ## table of summary statistics
 library(stargazer)
 summaryHeaders=c("n","mean",'sd',"min",'p25','p75','max')
-stargazer(mergedData[,c("DemocracyIndex","mili_pctGDP")],
-          title = "Stat summary for nummeric vars", 
+stargazer(mergedData[,originalNumeric],
+          title = "Stat summary for numeric vars", 
           label = "summaryNumeric",# cross-ref
-          font.size = 'footnotesize',
+          font.size = 'scriptsize',
           digits = 2,
           summary.stat = summaryHeaders)
 @
 
 % Use of R object inline
-In the Table \ref{summaryNumeric}, you realize that the mean of military expenditure is {\bf\Sexpr{mean(mergedData$mili_pctGDP)}}.
-
-It would be good to see a boxplot, check Figure \ref{numBoxplot} below.
+In the Table \ref{summaryNumeric}, you realize that the mean of HDI is {\bf\Sexpr{round(mean(mergedData$HumanDevelopmentIndex),2)}}. It would be good to see a boxplot, check Figure \ref{numBoxplot} below.
 
 
 \begin{figure}[h]
 \centering
-\begin{adjustbox}{width=7cm,height=5.5cm,clip,trim=0cm 0.5cm 0cm 0cm} 
+\begin{adjustbox}{width=12cm,height=8.5cm,clip,trim=0cm 0.5cm 0cm 0cm} 
 <<numBoxplot, echo=FALSE, fig=TRUE>>=
-base=ggplot(data=mergedData)
-box = base + geom_boxplot(aes(y=mili_pctGDP)) 
-box = box + labs(x="", y = "% of country GDP")
-box=box + theme(axis.text.x = element_blank(),
-                axis.ticks.x = element_blank())
+scaledNumeric=AllNumericNames[grepl('mM',AllNumericNames)]
+
+DataForBox=reshape2::melt(mergedData[,scaledNumeric])
+
+base=ggplot(data=DataForBox)
+box=base + geom_boxplot(aes(x=variable,y=value),
+                        fill='lightblue',
+                        color='red') + coord_flip()
+## plotting
 box
 @
 \end{adjustbox}
@@ -177,47 +188,52 @@ box
 \end{figure}
 
 %%%%% A citation: author(year)
-Boxplots were introduced by \citet{tukey_exploratory_1977}.
+Boxplots were introduced by \citet{tukey_exploratory_1977}. You can also flip the Table \ref{summaryNumeric}, as shown in Table \ref{summaryNumeric-flip}.
+
+
+
+<<summaryNumeric-flip, results=tex, echo=FALSE>>=
+stargazer(mergedData[,originalNumeric],
+          title = "Stat summary for numeric vars (flipped)", 
+          label = "summaryNumeric-flip",# cross-ref
+          font.size = 'scriptsize',
+          digits = 2,
+          summary.stat = summaryHeaders,
+          float.env = "sidewaystable")
+@
+
+\pagebreak
+
 
 
 %%%%
 \section{My Regression}\label{regre}
 
-Several times we need regression.
+Several times we need regression. This is a nice summary for two regressions, as shown in Table \ref{regs1}:
 
 <<regresPrep, echo=FALSE>>=
 ## prepare regressions
-h1=formula(mili_pctGDP~DemocracyIndex)
-regre1=lm(h1,data=mergedData)
+h1=formula(HumanDevelopmentIndex~Functioningofgovernment)
+regre1=glm(h1,data=mergedData,family = "gaussian")
 
-h2=formula(mili_pctGDP~DemocracyIndex + IndexofEconomicFreedom)
-regre2=lm(h2,data=mergedData)
+h2=formula(HumanDevelopmentIndex~Functioningofgovernment + Politicalparticipation)
+regre2=glm(h2,data=mergedData,family = "gaussian")
 @
 
 
-This is a nice summary for two regressions:
+
+
 
 <<regs1, echo=FALSE,results=tex>>=
-## show result of both
+## show result of both BETTER
 stargazer(regre1,regre2,
-          title = "Regression Models",
+          title = "Models for HDI",
+          dep.var.labels   = "Human Development",
+          covariate.labels = c("Bureaucracy", "Participation"),
           label = 'regs1')
 @
 
-
-You can also do this: You can also do this:You can also do this:You can also do this: You can also do this:You can also do this:You can also do this: You can also do this:You can also do this:You can also do this: You can also do this:You can also do this:You can also do this: You can also do this:You can also do this:You can also do this: You can also do this:You can also do this:You can also do this: You can also do this:You can also do this:You can also do this: You can also do this:You can also do this:
-\pagebreak
-
-<<regs2, echo=FALSE,results=tex>>=
-## show result of both BETTER
-stargazer(regre1,regre2,
-          title = "Regression Models",
-          dep.var.labels   = "Military Expenditure (percent of GDP)",
-          covariate.labels = c("Democracy", "Economic Freedom"),
-          label = 'regs2')
-@
-
-I hope you like what you see in the Table \ref{regs1} and in Table \ref{regs2}. You can learn more on regression in 
+I hope you like what you see in the Table \ref{regs1}. You can learn more on regression in 
 other book \citep[150-160]{petrie_introduction_2016}
 
 %%%%
@@ -225,51 +241,6 @@ other book \citep[150-160]{petrie_introduction_2016}
 
 \section{Other plots}\label{otherPlots}
 
-\subsection{A word cloud}\label{wordPlot}
-
-Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud. Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.Let me show a nice word cloud.
-
-<<collecting_DataForCloud, echo=FALSE>>=
-location=paste0(where,'rebelData.csv')
-wordData=read.csv(location)
-@
-
-<<prepareDataForCloud, echo=FALSE>>=
-library(tidyr)
-wordDataNames=separate_rows(wordData,StateName) # key process
-stateCounts=as.data.frame(table(wordDataNames$StateName))
-names(stateCounts)=c("state","aCount")
-@
-
-
-\begin{figure}[h]
-\centering
-\begin{adjustbox}{width=10cm,height=10cm,clip,trim=0cm 2cm 0cm 2cm} 
-<<theCloudPlot, echo=FALSE, fig=TRUE>>=
-library(ggwordcloud)
-
-set.seed(123)
-base = ggplot(stateCounts, aes(label = state,
-                               size= aCount,
-                               color = aCount))
-cloudRebel= base + geom_text_wordcloud() + theme_minimal()
-cloudRebel= cloudRebel+scale_color_gradient(low = "orange",
-                                            high = "red") 
-cloudRebel
-@
-\end{adjustbox}
-\caption{Nations by presence of rebel movements.}  
-\label{theCloudPlot} 
-\end{figure}
-
-
-Above you see our Figure \ref{theCloudPlot}. Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
-
-It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it.
-
-It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. 
-
-You can read something interesting somewhere else \citep{lipman_art_2022}.
 
 \subsection{A map}\label{mapPlot}
 
@@ -277,24 +248,45 @@ Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show
 
 Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.
 
-Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map in Figure \ref{theMapPlot}.
+Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map in Figure \ref{plot-cityMap}.
 
-<<collecting_DataMap, message=FALSE, echo=FALSE>>=
-fileMapPoints=paste0(where,"calls911_geo.geojson")
-fileMapPolygons=paste0(where,"MapSeattle.geojson")
+<<collecting-DataMap, message=FALSE, echo=FALSE>>=
 
+# github link to data:
+linkRepo="data/raw/master/"
+file_Name2="MapSeattle.geojson"
+file_Name3="calls911_geo.geojson"
+
+link_file_Name2=paste0(linkOrg,linkRepo,file_Name2)
+link_file_Name3=paste0(linkOrg,linkRepo,file_Name3)
+
+#opening data
 library(sf)
-events=read_sf(fileMapPoints)
-city=read_sf(fileMapPolygons)
+cityMap=read_sf(link_file_Name2)
+eventsLocations=read_sf(link_file_Name3)
 @
+
+\begin{figure}[h]
+\centering
+\begin{adjustbox}{width=10cm,height=10cm} 
+<<plot-cityMap, echo=FALSE, fig=TRUE>>=
+library(ggplot2)
+ggplot(cityMap) +geom_sf(aes(fill=ACRES_TOTAL))
+@
+\end{adjustbox}
+\caption{Plot numeric colums.}  
+\label{plot-cityMap} 
+\end{figure}
+
+Figure \ref{plot-cityMap} uses only one layer. Let's add another layer in the next map. Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it.  Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it.
 
 
 \begin{figure}[h]
 \centering
 \begin{adjustbox}{width=10cm,height=10cm} 
-<<theMapPlot, echo=FALSE, fig=TRUE>>=
-base=ggplot(city) + geom_sf() + theme_light()
-eventsByTime=base + geom_sf(data = events,
+<<plot-911Map, echo=FALSE, fig=TRUE>>=
+base=ggplot(cityMap) + geom_sf() + theme_light()
+eventsByTime=base + geom_sf(data = eventsLocations,
                          size=0.5,
                          aes(color=nightTime)) 
 
@@ -302,12 +294,13 @@ eventsByTime
 @
 \end{adjustbox}
 \caption{Calls to 911 by time of day.}  
-\label{theMapPlot} 
+\label{plot-911Map} 
 \end{figure}
 
-
+You can see that Figure \ref{plot-911Map} actually uses one map on top of the other. 
 Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. 
 
+%% more than one author in a citation
 Review other authors 
 (\citealp[120-160]{brunsdon_introduction_2015};
 \citealp[also, see][]{camara_spatial_nodate}) to know more.
@@ -320,6 +313,6 @@ Review other authors
 
 
 %\renewcommand{\refname}{Bibliography}
-\bibliography{FGVexample}
+\bibliography{Bib_winterschool}
 
 \end{document}
