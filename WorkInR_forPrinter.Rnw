@@ -1,41 +1,19 @@
 \documentclass[a4paper, 12pt]{article}
-
-%% for rotating tables
-\usepackage{rotating, graphicx}
-
-%% for bibliography
-\usepackage[natbibapa]{apacite}
-\bibliographystyle{apacite} 
-
-% size of plots and tables
-\usepackage{adjustbox} 
-
-% section numbering
-\usepackage{chngcntr}
-\counterwithin{table}{section}
-\counterwithin{figure}{section}
-
-% header of paper
 \title{This is my work in R}
-\author{
-        MyFirstName MyLastName\\
-        OrganizationName\\
-        City, ZipCope, \underline{Country}\\
-        \texttt{username@the.rest}
-}
-%\date{August 23, 2022} %manually
-\date{\today}  %automatic
-
-
-% every "begin: needs and "end"
-\begin{document}
-
+\author{ MyFirstName MyLastName\\OrganizationName\\
+         City, ZipCope, \underline{Country}\\
+        \url{username@the.rest}}
+\date{\today}  %% manually: \date{February 1, 2023} 
+\usepackage[natbibapa]{apacite} %% for bibliography
+\usepackage{rotating, graphicx} %% for rotating tables
+\usepackage{adjustbox} % size of plots and tables
+\usepackage{chngcntr}% section numbering
+\counterwithin{table}{section}\counterwithin{figure}{section}
+\begin{document} % every "begin: needs and "end"
 \SweaveOpts{concordance=TRUE}
 \maketitle 
-
 \begin{abstract}
-This is an example of an abstract in a paper. This is an example of an abstract in a paper. This is an example of an abstract in a paper. This is an example of an abstract in a paper.This is an example of an abstract in a paper.This is an example of an abstract in a paper.This is an example of an abstract in a paper.
-
+This is an example of an abstract in a paper. This is an example of an abstract in a paper. This is an example of an abstract in a paper. This is an example of an abstract in a paper.This is an example of an abstract in a paper.This is an example of an abstract in a paper.
 \end{abstract}
 
 % a chunk hidden (echo=FALSE) with some setup
@@ -305,14 +283,11 @@ Review other authors
 (\citealp[120-160]{brunsdon_introduction_2015};
 \citealp[also, see][]{camara_spatial_nodate}) to know more.
 
-
-
-
 \newpage
+
 %%%%% adding bibliography
-
-
+\bibliographystyle{apacite} %%style
 %\renewcommand{\refname}{Bibliography}
-\bibliography{Bib_winterschool}
+\bibliography{Bib_winterschool} %% filename
+\end{document} %% nothing after here
 
-\end{document}

@@ -1,25 +1,19 @@
 ---
-# This is page header
 title: "This is my work in R" 
-author: "MyFirstName MyLastName, OrganizationName, username@the.rest"
+author: "MyFirstName MyLastName<br>OrganizationName<br> username@the.rest"
 #date: '`r format(Sys.time(), "%B %d, %Y")`' #automatic
-date: "August 23, 2022" #manually
-abstract: "This is an example of an abstract in a paper. This is an example of an abstract in a paper.This is an example of an abstract in a paper. This is an example of an abstract in a paper.This is an example of an abstract in a paper.This is an example of an abstract in a paper.This is an example of an abstract in a paper."
-
+date: "February 1, 2023" #manually
+abstract: "This is an example of an abstract in a paper. This is an example of an abstract in a paper.This is an example of an abstract in a paper. This is an example of an abstract in a paper.This is an example of an abstract in a paper."
 fontsize: 12pt
-
 #setup of webpage output
-output:
-  bookdown::html_document2
-  
+output: bookdown::html_document2
 # for bibliography
 bibliography: Bib_winterschool.bib
 biblio-style: apalike
-#csl: apa.csl
+csl: apa.csl
 ---
 
 <br> <!--this is a line break-->
-
 
 <!-- a chunk hidden (echo=FALSE) with some setup-->
 
@@ -30,7 +24,7 @@ biblio-style: apalike
 rm(list = ls())
 ```
 
-<!-- use "-" to unnumber -->
+<!-- use "-" or ".unnumbered" to unnumber -->
 
 # Introduction {.unnumbered}
 
@@ -54,13 +48,13 @@ I will soon use cross-ref.I will soon use cross-ref: as we see in Section \@ref(
 
 ```{r collecting_DataTable, echo=FALSE}
 # github link to data:
-linkOrg="https://github.com/eScienceWinterSchool/"
-linkRepo="PythonSession/raw/master/"
+linkOrg=""
+linkRepo=""
 file_Name1="hdidemiso_plus.RDS"
 link_file_Name1=paste0(linkOrg,linkRepo,file_Name1)
-
+#link_file_Name1=url(link_file_Name1)
 #opening data
-mergedData=readRDS(url(link_file_Name1))
+mergedData=readRDS(link_file_Name1)
 ```
 
 ## Exploring Categorical Data {#catexplor}
@@ -96,8 +90,6 @@ freq(mergedData$Regimetype,
 ```
 
 You can see this variable plotted in Figure \@ref(fig:catBarplot) below.
-
-
 
 <!-- Object 'bar' will be created and plotted -->
 
@@ -173,8 +165,6 @@ h2=formula(HumanDevelopmentIndex~Functioningofgovernment + Politicalparticipatio
 regre2=glm(h2,data=mergedData,family = "gaussian")
 ```
 
-
-
 ```{r regs1,results='asis', echo=FALSE}
 # prepare labels
 
@@ -192,8 +182,6 @@ modelsummary(models,
              coef_rename =newCoefNames)
 ```
 
-
-
 I hope you like what you see in the Table \@ref(tab:regs1). You can learn more on regression in other book [@petrie_introduction_2016,150-160].
 
 # Other plots {#otherPlots}
@@ -209,7 +197,7 @@ Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show
 ```{r collecting-DataMap, echo=FALSE,message=FALSE}
 
 # github link to data:
-linkRepo="data/raw/master/"
+linkRepo=""
 file_Name2="MapSeattle.geojson"
 file_Name3="calls911_geo.geojson"
 
@@ -227,10 +215,8 @@ eventsLocations=read_sf(link_file_Name3)
 library(ggplot2)
 ggplot(cityMap) +geom_sf(aes(fill=ACRES_TOTAL))
 ```
+
 Figure \@ref(fig:plot-cityMap) uses only one layer. Let's add another layer in the next map. Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it.
-
-
-
 
 ```{r plot-911Map, echo=FALSE, fig.cap="Calls to 911 by time of day",message=FALSE}
 library(ggplot2)
@@ -240,6 +226,7 @@ eventsByTime=base + geom_sf(data = eventsLocations,
                          aes(color=nightTime)) 
 eventsByTime
 ```
+
 You can see that Figure \@ref(fig:plot-911Map) actually uses one map on top of the other. Let me show you an interactive version:
 
 ```{r plot-911Map-leaflet, echo=FALSE, fig.cap="A map using leaflet",message=FALSE}
@@ -257,17 +244,20 @@ leaflet(eventsLocations) %>% addTiles() %>%
   )
 ```
 
-
 Figure \@ref(fig:plot-911Map-leaflet) above looks nice. Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it.
 
 <!--- more than one author in a citation --->
 
-Review other authors 
-[@camara_spatial_nodate, 120-150;
-also, see @brunsdon_introduction_2015]
-to know more.
+Review other authors [@camara_spatial_nodate, 120-150; also, see @brunsdon_introduction_2015] to know more.
 
-# Bibliography{-}
+<!--- adding bibliography --->
+
+# Bibliography {.unnumbered}
+
+<!--something after Bibliography --->
+
+```{=html}
 <!--
 <div id="refs"></div>
 -->
+```
