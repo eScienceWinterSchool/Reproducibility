@@ -16,13 +16,6 @@
 This is an example of an abstract in a paper. This is an example of an abstract in a paper. This is an example of an abstract in a paper. This is an example of an abstract in a paper.This is an example of an abstract in a paper.This is an example of an abstract in a paper.
 \end{abstract}
 
-% a chunk hidden (echo=FALSE) with some setup
-% chunk has its own name 
-<<someSetup, echo=FALSE>>=
-# clean memory
-rm(list = ls())
-@
-
 
 \section*{Introduction} % * to unnumber
 
@@ -40,16 +33,20 @@ Another section. I will use a footnot now \footnote{This is a footnote.}. I will
 %cross-ref coming
 I will soon use cross-ref.I will soon use cross-ref: as we see in Section \ref{catexplor}.
 
+% a chunk hidden (echo=FALSE) with some setup
+% chunk has its own name 
 
 <<collecting-DataTable, echo=FALSE>>=
-# github link to data:
-linkOrg="https://github.com/eScienceWinterSchool/"
-linkRepo="PythonSession/raw/master/"
+# clean memory
+rm(list = ls())
+# paste the github link here (in two parts):
+linkOrg=""
+linkRepo=""
 file_Name1="hdidemiso_plus.RDS"
 link_file_Name1=paste0(linkOrg,linkRepo,file_Name1)
-
+#link_file_Name1=url(link_file_Name1)
 #opening data
-mergedData=readRDS(url(link_file_Name1))
+mergedData=readRDS(link_file_Name1)
 @
 
 \subsection{Exploring Categorical Data}\label{catexplor}
@@ -187,7 +184,7 @@ stargazer(mergedData[,originalNumeric],
 %%%%
 \section{My Regression}\label{regre}
 
-Several times we need regression. This is a nice summary for two regressions, as shown in Table \ref{regs1}:
+Several times we need regression. This is a nice summary for two regressions, as shown in Table \ref{regsPrint}:
 
 <<regresPrep, echo=FALSE>>=
 ## prepare regressions
@@ -202,16 +199,16 @@ regre2=glm(h2,data=mergedData,family = "gaussian")
 
 
 
-<<regs1, echo=FALSE,results=tex>>=
-## show result of both BETTER
+<<regsPrint, echo=FALSE,results=tex>>=
+## show result of both 
 stargazer(regre1,regre2,
           title = "Models for HDI",
           dep.var.labels   = "Human Development",
           covariate.labels = c("Bureaucracy", "Participation"),
-          label = 'regs1')
+          label = 'regsPrint')
 @
 
-I hope you like what you see in the Table \ref{regs1}. You can learn more on regression in 
+I hope you like what you see in the Table \ref{regsPrint}. You can learn more on regression in 
 other book \citep[150-160]{petrie_introduction_2016}
 
 %%%%
@@ -230,8 +227,8 @@ Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show
 
 <<collecting-DataMap, message=FALSE, echo=FALSE>>=
 
-# github link to data:
-linkRepo="data/raw/master/"
+# github link to data already saved!
+ 
 file_Name2="MapSeattle.geojson"
 file_Name3="calls911_geo.geojson"
 

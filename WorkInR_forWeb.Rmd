@@ -15,15 +15,6 @@ csl: apa.csl
 
 <br> <!--this is a line break-->
 
-<!-- a chunk hidden (echo=FALSE) with some setup-->
-
-<!-- chunk has its own name -->
-
-```{r someSetup, echo=FALSE}
-# clean memory
-rm(list = ls())
-```
-
 <!-- use "-" or ".unnumbered" to unnumber -->
 
 # Introduction {.unnumbered}
@@ -46,8 +37,14 @@ Another section. I will use a footnot now [^1]. I will soon use cross-ref.I will
 
 I will soon use cross-ref.I will soon use cross-ref: as we see in Section \@ref(catexplor).
 
-```{r collecting_DataTable, echo=FALSE}
-# github link to data:
+<!-- a chunk hidden (echo=FALSE) with some setup-->
+
+<!-- chunk has its own name -->
+
+```{r collecting-DataTable, echo=FALSE}
+# clean memory
+rm(list = ls())
+# paste the github link here (in two parts):
 linkOrg=""
 linkRepo=""
 file_Name1="hdidemiso_plus.RDS"
@@ -154,7 +151,7 @@ The boxplots you have just seen were introduced by [@tukey_exploratory_1977].
 
 # My Regression
 
-Several times we need regression. This is a nice summary for two regressions, as shown in Table \@ref(tab:regs1):
+Several times we need regression. This is a nice summary for two regressions, as shown in Table \@ref(tab:regsPrint):
 
 ```{r regresPrep, echo=FALSE}
 ## prepare regressions
@@ -165,7 +162,7 @@ h2=formula(HumanDevelopmentIndex~Functioningofgovernment + Politicalparticipatio
 regre2=glm(h2,data=mergedData,family = "gaussian")
 ```
 
-```{r regs1,results='asis', echo=FALSE}
+```{r regsPrint,results='asis', echo=FALSE}
 # prepare labels
 
 newCoefNames=c('(Intercept)' = 'Constant',
@@ -182,7 +179,7 @@ modelsummary(models,
              coef_rename =newCoefNames)
 ```
 
-I hope you like what you see in the Table \@ref(tab:regs1). You can learn more on regression in other book [@petrie_introduction_2016,150-160].
+I hope you like what you see in the Table \@ref(tab:regsPrint). You can learn more on regression in other book [@petrie_introduction_2016,150-160].
 
 # Other plots {#otherPlots}
 
@@ -196,8 +193,8 @@ Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show
 
 ```{r collecting-DataMap, echo=FALSE,message=FALSE}
 
-# github link to data:
-linkRepo=""
+# github link to data already saved!
+ 
 file_Name2="MapSeattle.geojson"
 file_Name3="calls911_geo.geojson"
 
