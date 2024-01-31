@@ -3,7 +3,7 @@
 \author{ MyFirstName MyLastName\\OrganizationName\\
          City, ZipCope, \underline{Country}\\
         \url{username@the.rest}}
-\date{\today}  %% manually: \date{February 1, 2023} 
+\date{\today}  %% manually: \date{January 30, 2024} 
 \usepackage[natbibapa]{apacite} %% for bibliography
 \usepackage{rotating, graphicx} %% for rotating tables
 \usepackage{adjustbox} % size of plots and tables
@@ -163,7 +163,10 @@ box
 \end{figure}
 
 %%%%% A citation: author(year)
-Boxplots were introduced by \citet{tukey_exploratory_1977}. You can also flip the Table \ref{summaryNumeric}, as shown in Table \ref{summaryNumeric-flip}.
+
+Boxplots were introduced by \citet{tukey_exploratory_1977}.
+
+You can also flip the Table \ref{summaryNumeric}, as shown in Table \ref{summaryNumeric-flip}.
 
 
 
@@ -208,8 +211,9 @@ stargazer(regre1,regre2,
           label = 'regsPrint')
 @
 
-I hope you like what you see in the Table \ref{regsPrint}. You can learn more on regression in 
-other book \citep[150-160]{petrie_introduction_2016}
+I hope you like what you see in the Table \ref{regsPrint}. 
+
+You can learn more on regression in other book \citep[150-160]{petrie_introduction_2016}
 
 %%%%
 
@@ -276,6 +280,7 @@ You can see that Figure \ref{plot-911Map} actually uses one map on top of the ot
 Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. 
 
 %% more than one author in a citation
+
 Review other authors 
 (\citealp[120-160]{brunsdon_introduction_2015};
 \citealp[also, see][]{camara_spatial_nodate}) to know more.

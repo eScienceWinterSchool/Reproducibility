@@ -1,8 +1,8 @@
 ---
 title: "This is my work in R" 
-author: "MyFirstName MyLastName<br>OrganizationName<br> username@the.rest"
+author: "MyFirstName MyLastName<br>OrganizationName<br>username@the.rest"
 #date: '`r format(Sys.time(), "%B %d, %Y")`' #automatic
-date: "February 1, 2023" #manually
+date: "January 30, 2024" #manually
 abstract: "This is an example of an abstract in a paper. This is an example of an abstract in a paper.This is an example of an abstract in a paper. This is an example of an abstract in a paper.This is an example of an abstract in a paper."
 fontsize: 12pt
 #setup of webpage output
@@ -147,7 +147,7 @@ box
 
 <!--- A citation: author(year) --->
 
-The boxplots you have just seen were introduced by [@tukey_exploratory_1977].
+Boxplots were introduced by [@tukey_exploratory_1977].
 
 # My Regression
 
@@ -179,7 +179,9 @@ modelsummary(models,
              coef_rename =newCoefNames)
 ```
 
-I hope you like what you see in the Table \@ref(tab:regsPrint). You can learn more on regression in other book [@petrie_introduction_2016,150-160].
+I hope you like what you see in the Table \@ref(tab:regsPrint). 
+
+You can learn more on regression in other book [@petrie_introduction_2016,150-160].
 
 # Other plots {#otherPlots}
 
