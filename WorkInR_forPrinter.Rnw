@@ -158,7 +158,7 @@ box=base + geom_boxplot(aes(x=variable,y=value),
 box
 @
 \end{adjustbox}
-\caption{Money spent per country on Military stuff}  
+\caption{The nice boxplots}  
 \label{numBoxplot} 
 \end{figure}
 
