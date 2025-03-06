@@ -3,7 +3,7 @@
 \author{ MyFirstName MyLastName\\OrganizationName\\
          City, ZipCope, \underline{Country}\\
         \url{username@the.rest}}
-\date{\today}  %% manually: \date{January 30, 2024} 
+\date{\today}  %% manually: \date{March 6, 2025} 
 \usepackage[natbibapa]{apacite} %% for bibliography
 \usepackage{rotating, graphicx} %% for rotating tables
 \usepackage{adjustbox} % size of plots and tables
@@ -283,13 +283,13 @@ Here, I continue doing this nice work, I hope you like it and read it. It has be
 
 Review other authors 
 (\citealp[120-160]{brunsdon_introduction_2015};
-\citealp[also, see][]{camara_spatial_nodate}) to know more.
+\citealp[also, see][]{camara_spatial_2004}) to know more.
 
 \newpage
 
 %%%%% adding bibliography
 \bibliographystyle{apacite} %%style
 %\renewcommand{\refname}{Bibliography}
-\bibliography{Bib_winterschool} %% filename
+\bibliography{eScienceWinterBib} %% filename
 \end{document} %% nothing after here
 

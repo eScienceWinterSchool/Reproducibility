@@ -2,13 +2,13 @@
 title: "This is my work in R" 
 author: "MyFirstName MyLastName<br>OrganizationName<br>username@the.rest"
 #date: '`r format(Sys.time(), "%B %d, %Y")`' #automatic
-date: "January 30, 2024" #manually
+date: "March 5, 2025" #manually
 abstract: "This is an example of an abstract in a paper. This is an example of an abstract in a paper.This is an example of an abstract in a paper. This is an example of an abstract in a paper.This is an example of an abstract in a paper."
 fontsize: 12pt
 #setup of webpage output
 output: bookdown::html_document2
 # for bibliography
-bibliography: Bib_winterschool.bib
+bibliography: eScienceWinterBib.bib
 biblio-style: apalike
 csl: apa.csl
 ---
@@ -247,7 +247,7 @@ Figure \@ref(fig:plot-911Map-leaflet) above looks nice. Here, I continue doing t
 
 <!--- more than one author in a citation --->
 
-Review other authors [@camara_spatial_nodate, 120-150; also, see @brunsdon_introduction_2015] to know more.
+Review other authors [@camara_spatial_2004, 120-150; also, see @brunsdon_introduction_2015] to know more.
 
 <!--- adding bibliography --->
 

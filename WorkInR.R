@@ -1,6 +1,5 @@
 # clean memory
 rm(list = ls())
-# paste the github link here (in two parts):
 file_Name1="hdidemiso_plus.RDS"
 mergedData=readRDS(file_Name1)
 
@@ -18,13 +17,9 @@ AllNumericNames=names(Filter(is.numeric, mergedData))
 originalNumeric=AllNumericNames[!grepl('mM',AllNumericNames)]
 
 summary(mergedData[,originalNumeric])
-library(vtable)
-st(mergedData[,originalNumeric],
-   title ="Stats summary for numeric vars",
-   digits = 1) #decimal places
 
+# boxplot for them
 scaledNumeric=AllNumericNames[grepl('mM',AllNumericNames)]
-
 DataForBox=reshape2::melt(mergedData[,scaledNumeric])
 boxplot(mergedData[,scaledNumeric])
 
